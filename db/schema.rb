@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_29_212402) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_29_223713) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_29_212402) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
+
+  create_table "clicks", force: :cascade do |t|
+    t.string "ip_address"
+    t.bigint "url_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "browser"
+    t.string "country"
+    t.string "city"
+    t.index ["url_id"], name: "index_clicks_on_url_id"
   end
 
   create_table "urls", force: :cascade do |t|
@@ -47,5 +58,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_29_212402) do
   end
 
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "clicks", "urls"
   add_foreign_key "urls", "users"
 end

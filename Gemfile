@@ -46,6 +46,5 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-
-
 gem "devise", "~> 4.9"
+gem 'faraday', '~> 2.7', '>= 2.7.11'
