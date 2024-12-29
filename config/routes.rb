@@ -5,9 +5,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       defaults format: :json do
         get 'urls', to: 'urls#index'
+        get 'urls/:id', to: 'urls#show'
+        post 'urls', to: 'urls#create'
 
-        post 'users/sign_up' => 'users#create'
-        get 'users/get_token' => 'users#get_user_token'
+        post 'users/sign_up' => 'users#sign_up'
+        post 'users/sign_in' => 'users#sign_in'
+        get  'users/token' => 'users#token'
       end
     end
   end

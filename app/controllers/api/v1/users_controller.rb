@@ -1,20 +1,35 @@
 class Api::V1::UsersController < ActionController::Base
-  def create
+  def sign_up
     user = User.new(user_params)
     if user.save!
-      user.api_tokens.create
+      @token = user.api_tokens.create
+      if @token
+        @token.update(active: true)
+      end
+
       render json: { message: 'User created successfully', user: user, token: user.api_tokens.first.token }, status: 200
     else
       render json: { errors: 'User Not Created'}, status: :unprocessable_entity
     end
   end
 
-  def get_user_token
+  def sign_in
     user = User.find_by(email: params[:email])
-    if user.present?
+    if user.present? && valid_password?(user)
       token = get_token(user)
+      render json: { token: token }, status: :ok
+    else
+      render json: { error: 'Invalid email or password' }, status: :unauthorized
+    end
+  end
 
-      render json: { token: token}, status: :ok
+  def token
+    token = ApiToken.find_by(token: params[:token])
+
+    if token.present?
+      render json: { status: token.active }, status: :ok
+    else
+      render json: { error: 'Token not found' }, status: 404
     end
   end
 
@@ -29,6 +44,10 @@ class Api::V1::UsersController < ActionController::Base
   end
 
   def get_token(user)
-    user.api_tokens.find_by(active: true).token
+    token = user.api_tokens.find_by(active: true).token
+  end
+
+  def valid_password?(user)
+    user&.valid_password?(params[:password])
   end
 end

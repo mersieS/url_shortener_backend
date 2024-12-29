@@ -28,7 +28,7 @@ development:
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: url_shortener
+  #username: url_shortener.rb
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -82,7 +82,7 @@ production:
   primary: &primary_production
     <<: *default
     database: url_shortener_production
-    username: url_shortener
+    username: url_shortener.rb
     password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
