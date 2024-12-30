@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       defaults format: :json do
         get 'urls', to: 'urls#index'
         get 'urls/:id', to: 'urls#show'
+        get 'urls/:id/statistics', to: 'urls#statistics'
         get 'urls/:id/clicks_per_day', to: 'urls#clicks_per_day'
         post 'urls', to: 'urls#create'
 

@@ -22,6 +22,16 @@ class Api::V1::UrlsController < Api::V1::AuthenticatedController
     @url = current_user.urls.find(params[:id])
 
     if @url.present?
+      render json: { url: @url }, status: :ok
+    else
+      render json: { errors: @url.errors.full_messages }, status: :internal_server_error
+    end
+  end
+
+  def statistics
+    @url = current_user.urls.find(params[:id])
+
+    if @url.present?
       report_data = ClicksReportService.new(@url).generate_report
       report = ClicksReportSerializer.new(report_data).as_json
       render json: report, status: :ok
