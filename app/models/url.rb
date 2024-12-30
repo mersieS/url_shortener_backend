@@ -12,10 +12,13 @@ class Url < ApplicationRecord
   end
 
   def clicks_grouped_by_day(range)
+    start_date = range.begin.beginning_of_day
+    end_date = range.end.end_of_day
+
     clicks
-      .where(created_at: range)
-      .group(Arel.sql("DATE_TRUNC('day', created_at)"))
-      .order(Arel.sql("DATE_TRUNC('day', created_at)"))
+      .where(created_at: start_date..end_date)
+      .group(Arel.sql("DATE(created_at)"))
+      .order(Arel.sql("DATE(created_at)"))
       .count
   end
 end
