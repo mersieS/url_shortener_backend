@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   end
 
   get '/:short_url', to: 'redirects#redirect', as: :short
+
+  root "controller#action"
 end
