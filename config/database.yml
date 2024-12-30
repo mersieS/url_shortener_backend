@@ -81,18 +81,8 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: url_shortener_production
-    username: url_shortener.rb
-    password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: url_shortener_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: url_shortener_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: url_shortener_production_cable
-    migrations_paths: db/cable_migrate
+    database: url-shortener-445115:europe-west2:saloshort-prod
+    username: postgres
+    host: <%= Rails.application.credentials.dig(:production, :host) %>
+    password: <%= Rails.application.credentials.dig(:production, :db_password) %>
+    port: 5432
