@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_29_223713) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_30_013427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -31,6 +31,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_29_223713) do
     t.string "browser"
     t.string "country"
     t.string "city"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["url_id"], name: "index_clicks_on_url_id"
   end
 

@@ -7,7 +7,7 @@ class RedirectsController < ApplicationController
         browser: request.user_agent
       )
 
-      service = GeoLocations::GetLocation.new(click: @click)
+      service = IpApi::GetLocation.new(click: @click)
       data = service.execute
 
       @click.country = get_country(data)

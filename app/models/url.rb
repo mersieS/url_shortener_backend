@@ -10,4 +10,12 @@ class Url < ApplicationRecord
   def generate_short_url
     self.short_url = SecureRandom.alphanumeric(6) if short_url.blank?
   end
+
+  def clicks_grouped_by_day(range)
+    clicks
+      .where(created_at: range)
+      .group(Arel.sql("DATE_TRUNC('day', created_at)"))
+      .order(Arel.sql("DATE_TRUNC('day', created_at)"))
+      .count
+  end
 end

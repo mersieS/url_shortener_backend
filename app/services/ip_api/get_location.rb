@@ -1,4 +1,4 @@
-module GeoLocations
+module IpApi
   class GetLocation
     attr_reader :click
 

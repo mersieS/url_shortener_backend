@@ -60,6 +60,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ed25519 (v1.3.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="et-orbi (v1.2.11, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v3.5.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday (v2.12.2, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.4.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fugit (v1.11.1, rbenv: 3.3.6) [gem]" level="application" />
