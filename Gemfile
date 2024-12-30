@@ -49,5 +49,3 @@ end
 gem "devise", "~> 4.9"
 gem 'faraday', '~> 2.7', '>= 2.7.11'
 gem "faker", "~> 3.5"
-
-gem "appengine", "~> 0.7.0"

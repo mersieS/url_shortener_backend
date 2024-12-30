@@ -4,10 +4,10 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 development:
   <<: *default
-  database: logtrack_development
+  database: url_shortener_development
 test:
   <<: *default
-  database: logtrack_test
+  database: url_shortener_test
 production:
   primary: &primary
     <<: *default
