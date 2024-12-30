@@ -81,7 +81,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: url-shortener-445115:europe-west2:saloshort-prod
+    database: saloshort-prod
     username: postgres
     host: <%= Rails.application.credentials.dig(:production, :host) %>
     password: <%= Rails.application.credentials.dig(:production, :db_password) %>
