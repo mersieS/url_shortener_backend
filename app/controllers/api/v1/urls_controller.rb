@@ -32,8 +32,7 @@ class Api::V1::UrlsController < Api::V1::AuthenticatedController
 
   private
 
-  def link_params
+  def url_params
     params.permit(:name, :original_url)
   end
-
 end
