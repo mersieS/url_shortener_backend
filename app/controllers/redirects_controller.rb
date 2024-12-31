@@ -12,6 +12,8 @@ class RedirectsController < ApplicationController
 
       @click.country = get_country(data)
       @click.city = get_city(data)
+      @click.latitude = get_latitude(data)
+      @click.longitude = get_longitude(data)
       @click.save
 
       redirect_to @url.original_url, allow_other_host: true
@@ -28,5 +30,13 @@ class RedirectsController < ApplicationController
 
   def get_city(data)
     data[:city] ||= ""
+  end
+
+  def get_latitude(data)
+    data[:lat] ||= 0
+  end
+
+  def get_longitude(data)
+    data[:lon] ||= 0
   end
 end
