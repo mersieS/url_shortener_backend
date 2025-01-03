@@ -1,4 +1,4 @@
-name: CI
+name: Ruby on Rails CI
 
 on:
   push:
@@ -10,36 +10,26 @@ on:
 
 jobs:
   test:
-    name: Run Tests
     runs-on: ubuntu-latest
-
-    services:
-      db:
-        image: postgres:16
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: url_shortener_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U postgres"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
 
+    - name: Install System Dependencies
+      run: sudo apt-get update && sudo apt-get install -y libpq-dev
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.3.6 
+        ruby-version: 3.3.6
         bundler-cache: true
 
+    - name: Install Bundler
+      run: gem install bundler -v 2.4.7
+
     - name: Install Dependencies
-      run: bundle install
+      run: bundle install --retry 3
 
     - name: Set up Database
       env:
