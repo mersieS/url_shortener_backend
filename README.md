@@ -1,26 +1,39 @@
-# README
+## Kurulum
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Bağımlı olunan gem paketlerini kur;
 
-Things you may want to cover:
+```
+bundle install
+```
 
-* Ruby version
+**Not**: **.env example** dosyasında bulunan değişkenler **.env** dosyasına kopyalandıktan sonra **TOKEN, DB_USERNAME, DB_HOST** değişkenleri uygun şekilde güncellenmelidir.
 
-* System dependencies
+- Database yaratmak için;
 
-* Configuration
+```
+rails db:create
+```
 
-* Database creation
+- Database migration dosyalarını çalıştır;
 
-* Database initialization
+```
+rails db:migrate
+```
 
-* How to run the test suite
+- Seed data oluştur (opsiyonel);
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rails db:seed
+```
 
-* Deployment instructions
+- Sunucuyu çalıştır;
 
-* https://roadmap.sh/projects/url-shortening-service
+```
+rails server
+```
 
-* ...
+- Çalışma anında test kodları için rspec komutu kullanılabilir;
+
+```
+bundle exec rspec
+```
