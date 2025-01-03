@@ -36,10 +36,3 @@ jobs:
         RAILS_ENV: test
       run: bundle exec rspec
 
-    - name: Deploy to Cloud66
-      if: success()
-      env:
-        CLOUD66_HOOK_URL: ${{ secrets.CLOUD66_HOOK_URL }}
-      run: |
-        curl -X POST "$CLOUD66_HOOK_URL"
-
